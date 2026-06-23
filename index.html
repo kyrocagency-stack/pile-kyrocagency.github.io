@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vitamilk Côte d'Ivoire — Le lait de soja onctueux, naturel et énergisant. La force du soja, le goût d'Ivoire.">
+  <meta name="theme-color" content="#E8252C">
+  <meta property="og:title" content="Vitamilk Côte d'Ivoire — Bois ta force">
+  <meta property="og:description" content="Le lait de soja qui te ressemble. Naturel, savoureux, fier d'Ivoire.">
+  <meta property="og:type" content="website">
+  <title>Vitamilk Côte d'Ivoire — Bois ta force</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       VITAMILK CÔTE D'IVOIRE — DESIGN SYSTEM (standalone)
+       Palette : Rouge #E8252C · Crème #F5EDD9 · Ivoire #FBF6E9
+       ============================================================ */
+    :root{
+      --red:#E8252C; --red-deep:#B81820; --red-soft:#FFEDED;
+      --cream:#F5EDD9; --ivory:#FBF6E9;
+      --ink:#1A1209; --ink-soft:#2A1F12; --brown:#3D2817;
+      --gold:#D4A24C; --sage:#6F8050;
+      --line:rgba(26,18,9,.12);
+      --t-mono:clamp(.72rem,.66rem + .3vw,.84rem);
+      --t-body:clamp(.95rem,.88rem + .35vw,1.08rem);
+      --t-lead:clamp(1.1rem,1rem + .55vw,1.4rem);
+      --t-h2:clamp(2rem,1.3rem + 3.2vw,4.2rem);
+      --t-h1:clamp(3rem,1.4rem + 7.5vw,8.5rem);
+      --gutter:clamp(1.25rem,.6rem + 2vw,2.5rem);
+      --section:clamp(4.5rem,2.5rem + 7vw,9rem);
+      --radius:24px;
+      --shadow:0 24px 60px rgba(26,18,9,.16);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:90px;}
+    body{
+      font-family:'Manrope',-apple-system,'Segoe UI',sans-serif;
+      font-size:var(--t-body);line-height:1.6;color:var(--ink);
+      background:var(--ivory);overflow-x:hidden;
+      font-feature-settings:"ss01","cv11";-webkit-font-smoothing:antialiased;
+    }
+    img{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+    button{font:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+    ::selection{background:var(--red);color:var(--ivory);}
+    .container{width:100%;max-width:1440px;margin:0 auto;padding:0 var(--gutter);}
+
+    /* ---------- Typographie utilitaire ---------- */
+    .display{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.04em;line-height:.92;}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:.6em;
+      font-size:var(--t-mono);letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+    }
+    .eyebrow::before{content:"";width:28px;height:1.5px;background:currentColor;}
+
+    /* ---------- Boutons ---------- */
+    .btn{
+      display:inline-flex;align-items:center;gap:.6em;
+      padding:1em 1.7em;border-radius:999px;
+      font-weight:600;font-size:.95rem;letter-spacing:.01em;white-space:nowrap;
+      transition:transform .25s cubic-bezier(.2,.7,.2,1),background .25s,color .25s,box-shadow .25s;
+    }
+    .btn-primary{background:var(--red);color:var(--ivory);box-shadow:0 8px 24px rgba(232,37,44,.28);}
+    .btn-primary:hover{background:var(--red-deep);transform:translateY(-2px);box-shadow:0 12px 30px rgba(232,37,44,.36);}
+    .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}
+    .btn-ghost:hover{background:var(--ink);color:var(--ivory);}
+    .btn-light{background:var(--ivory);color:var(--ink);}
+    .btn-light:hover{background:#fff;transform:translateY(-2px);}
+    .btn .arrow{display:inline-block;transition:transform .3s;}
+    .btn:hover .arrow{transform:translateX(4px);}
+
+    /* ---------- Emplacements LOGO ---------- */
+    .logo-slot{
+      display:inline-flex;align-items:center;justify-content:center;
+      font-weight:800;letter-spacing:.04em;font-size:1.25rem;line-height:1;
+      font-family:'Fraunces',serif;
+    }
+    .logo-slot .v-mark{
+      width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+      margin-right:.5rem;font-size:1.1rem;font-weight:800;
+    }
+    /* Logo rouge — fonds clairs (header) */
+    .logo-red{color:var(--red);}
+    .logo-red .v-mark{background:var(--red);color:#fff;}
+    /* Logo blanc — fonds sombres (footer) */
+    .logo-white{color:#fff;}
+    .logo-white .v-mark{background:#fff;color:var(--red);}
+
+    /* ============================================================
+       HEADER
+       ============================================================ */
+    header{
+      position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 0;
+      background:rgba(251,246,233,.85);
+      backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid transparent;
+      transition:border-color .3s,padding .3s,background .3s;
+    }
+    header.scrolled{border-bottom-color:var(--line);padding:.7rem 0;}
+    .nav-row{display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+    nav.primary ul{display:flex;gap:2.2rem;list-style:none;}
+    nav.primary a{font-size:.92rem;font-weight:500;position:relative;padding:.3em 0;}
+    nav.primary a::after{
+      content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1.5px;background:var(--red);
+      transition:right .3s cubic-bezier(.2,.7,.2,1);
+    }
+    nav.primary a:hover::after{right:0;}
+    .header-cta{display:flex;gap:.7rem;align-items:center;}
+    .menu-toggle{display:none;width:44px;height:44px;border-radius:999px;border:1.5px solid var(--ink);align-items:center;justify-content:center;}
+    .menu-toggle span,.menu-toggle span::before,.menu-toggle span::after{
+      content:"";width:18px;height:1.5px;background:var(--ink);display:block;position:relative;
+    }
+    .menu-toggle span::before{content:"";position:absolute;top:-6px;}
+    .menu-toggle span::after{content:"";position:absolute;top:6px;}
+    @media (max-width:980px){
+      nav.primary{display:none;}
+      .header-cta .btn-ghost{display:none;}
+      .menu-toggle{display:inline-flex;}
+    }
+
+    /* Mobile drawer */
+    .drawer{
+      position:fixed;inset:0;background:var(--red);color:var(--ivory);z-index:200;
+      padding:5rem var(--gutter) 2rem;transform:translateY(-100%);
+      transition:transform .5s cubic-bezier(.7,0,.3,1);
+      display:flex;flex-direction:column;gap:2rem;
+    }
+    .drawer.open{transform:translateY(0);}
+    .drawer .close{position:absolute;top:1.4rem;right:var(--gutter);width:44px;height:44px;border-radius:999px;border:1.5px solid var(--ivory);color:var(--ivory);font-size:1.2rem;}
+    .drawer ul{list-style:none;display:flex;flex-direction:column;gap:1.2rem;}
+    .drawer ul a{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:600;letter-spacing:-.02em;}
+
+    /* ============================================================
+       ANIMATIONS DE DÉFILEMENT
+       ============================================================ */
+    .reveal{opacity:0;transform:translateY(38px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+    .reveal.in{opacity:1;transform:translateY(0);}
+    .reveal-left{opacity:0;transform:translateX(-38px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+    .reveal-left.in{opacity:1;transform:translateX(0);}
+    .reveal-right{opacity:0;transform:translateX(38px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+    .reveal-right.in{opacity:1;transform:translateX(0);}
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none !important;}
+      .reveal,.reveal-left,.reveal-right{opacity:1 !important;transform:none !important;}
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero{
+      position:relative;isolation:isolate;overflow:hidden;
+      padding:9rem 0 var(--section);
+      background:radial-gradient(ellipse at 82% 18%,rgba(232,37,44,.10),transparent 60%),var(--ivory);
+    }
+    .hero-rail{
+      position:absolute;left:-2px;top:54%;transform:rotate(-90deg);transform-origin:left center;
+      font-size:.74rem;letter-spacing:.42em;font-weight:600;text-transform:uppercase;
+      color:var(--ink-soft);opacity:.5;white-space:nowrap;pointer-events:none;
+    }
+    @media (max-width:1100px){.hero-rail{display:none;}}
+    .hero-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:var(--gutter);align-items:center;min-height:72vh;}
+    @media (max-width:880px){.hero-grid{grid-template-columns:1fr;min-height:auto;gap:3rem;}}
+    .hero-meta{display:flex;gap:1.4rem;align-items:center;margin-bottom:1.8rem;color:var(--ink-soft);}
+    .hero-meta .dot{width:6px;height:6px;border-radius:999px;background:var(--red);}
+    .hero h1{
+      font-family:'Fraunces',serif;font-size:var(--t-h1);font-weight:700;
+      line-height:.88;letter-spacing:-.045em;color:var(--ink);margin-bottom:1.5rem;
+    }
+    .hero h1 em{font-style:italic;font-weight:400;color:var(--red);letter-spacing:-.025em;}
+    .hero-lead{font-size:var(--t-lead);color:var(--ink-soft);max-width:38ch;margin-bottom:2.4rem;line-height:1.45;}
+    .hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:3rem;}
+    .hero-stats{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid var(--line);flex-wrap:wrap;}
+    .stat .num{font-family:'Fraunces',serif;font-size:2.6rem;font-weight:700;line-height:1;letter-spacing:-.03em;color:var(--red);}
+    .stat .label{font-size:.82rem;color:var(--ink-soft);margin-top:.4rem;max-width:18ch;}
+    .hero-visual{position:relative;aspect-ratio:4/5;width:100%;max-width:520px;margin-left:auto;justify-self:end;}
+    @media (max-width:880px){.hero-visual{justify-self:center;}}
+    .hero-visual .bottle{
+      position:absolute;inset:0;overflow:hidden;
+      background:
+        radial-gradient(ellipse at 50% 100%,rgba(232,37,44,.25),transparent 60%),
+        linear-gradient(160deg,#FFE4B5 0%,var(--cream) 60%,#E8D5A8 100%);
+      border-radius:30px 30px 200px 200px/30px 30px 80px 80px;
+      box-shadow:inset 0 -40px 80px rgba(232,37,44,.08),var(--shadow);
+      display:flex;align-items:center;justify-content:center;
+      animation:bottleFloat 6s ease-in-out infinite;
+    }
+    @keyframes bottleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    .bottle .hint{font-size:.78rem;letter-spacing:.25em;font-weight:600;color:rgba(26,18,9,.32);}
+    .hero-badge{
+      position:absolute;top:-25px;right:-25px;z-index:3;width:130px;height:130px;border-radius:999px;
+      background:var(--red);color:var(--ivory);display:flex;align-items:center;justify-content:center;
+      text-align:center;font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:.95rem;line-height:1.1;
+      padding:1rem;box-shadow:0 10px 30px rgba(232,37,44,.35);animation:spin 22s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ============================================================
+       BANDEAU DÉFILANT
+       ============================================================ */
+    .marquee{background:var(--ink);color:var(--ivory);padding:1.8rem 0;overflow:hidden;}
+    .marquee-track{display:flex;gap:4rem;width:max-content;animation:marquee 35s linear infinite;}
+    .marquee span{
+      font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+      font-size:clamp(1.8rem,1rem + 3.5vw,3.6rem);letter-spacing:-.02em;white-space:nowrap;
+    }
+    .marquee .m-dot{color:var(--red);font-style:normal;align-self:center;font-size:1.3rem;}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+
+    /* ============================================================
+       LA FORCE DU SOJA — BIENFAITS + COMPTEURS
+       ============================================================ */
+    .section{padding:var(--section) 0;}
+    .section-head{display:grid;grid-template-columns:1fr 1.5fr;gap:var(--gutter);margin-bottom:4rem;align-items:end;}
+    @media (max-width:880px){.section-head{grid-template-columns:1fr;gap:1.5rem;margin-bottom:2.5rem;}}
+    .section-head h2{font-family:'Fraunces',serif;font-size:var(--t-h2);font-weight:700;line-height:.95;letter-spacing:-.035em;}
+    .section-head h2 em{font-style:italic;font-weight:400;color:var(--red);}
+    .section-head .desc{font-size:var(--t-lead);color:var(--ink-soft);max-width:50ch;line-height:1.45;}
+    .section-eyebrow{color:var(--red);margin-bottom:1rem;}
+
+    .benefits{background:var(--ivory);}
+    .benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+    @media (max-width:980px){.benefit-grid{grid-template-columns:repeat(2,1fr);}}
+    @media (max-width:560px){.benefit-grid{grid-template-columns:1fr;}}
+    .benefit{
+      padding:2rem 1.75rem;border-radius:var(--radius);background:var(--cream);
+      border:1px solid var(--line);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
+    }
+    .benefit:hover{transform:translateY(-8px);box-shadow:var(--shadow);}
+    .benefit .b-num{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:700;line-height:1;color:var(--red);letter-spacing:-.03em;}
+    .benefit .b-num small{font-size:1.4rem;}
+    .benefit .b-title{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;margin:1.2rem 0 .5rem;letter-spacing:-.01em;}
+    .benefit .b-text{font-size:.92rem;color:var(--ink-soft);line-height:1.55;}
+
+    /* ============================================================
+       NOS PRODUITS
+       ============================================================ */
+    .products{background:var(--cream);}
+    .product-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;}
+    @media (max-width:1100px){.product-grid{grid-template-columns:repeat(3,1fr);}}
+    @media (max-width:700px){.product-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}}
+    .product-card{
+      position:relative;aspect-ratio:3/4;border-radius:var(--radius);padding:1.5rem;overflow:hidden;
+      display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);cursor:pointer;
+      transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
+    }
+    .product-card:hover{transform:translateY(-10px);box-shadow:var(--shadow);}
+    .product-card.nature{background:linear-gradient(165deg,#F5EDD9,#E8D8B0);}
+    .product-card.choco{background:linear-gradient(165deg,#6B4423,#3D2817);color:var(--ivory);}
+    .product-card.fraise{background:linear-gradient(165deg,#F4B8C0,#D9747F);color:var(--ivory);}
+    .product-card.banane{background:linear-gradient(165deg,#F4DC8C,#D4A24C);}
+    .product-card.energy{background:linear-gradient(165deg,var(--red),var(--red-deep));color:var(--ivory);}
+    .product-card .num{font-family:'Fraunces',serif;font-style:italic;font-size:.9rem;opacity:.6;}
+    .product-card .bottle-mock{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:60%;aspect-ratio:1/2.4;display:flex;align-items:center;justify-content:center;
+      background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+      border-radius:14px 14px 60px 60px/8px 8px 16px 16px;backdrop-filter:blur(2px);
+      transition:transform .4s cubic-bezier(.2,.7,.2,1);
+    }
+    .product-card:hover .bottle-mock{transform:translate(-50%,-50%) scale(1.07);}
+    .product-card .v-badge{
+      width:48px;height:48px;border-radius:999px;display:flex;align-items:center;justify-content:center;
+      background:var(--red);color:var(--ivory);font-family:'Fraunces',serif;font-weight:800;font-size:1.4rem;
+    }
+    .product-card.energy .v-badge{background:var(--ivory);color:var(--red);}
+    .product-card .meta{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:flex-end;gap:.5rem;}
+    .product-card .name{font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem;letter-spacing:-.02em;line-height:1;}
+    .product-card .vol{font-size:.8rem;opacity:.7;margin-top:.25rem;}
+    .product-card .arrow-circle{
+      width:38px;height:38px;border-radius:999px;flex:none;display:flex;align-items:center;justify-content:center;
+      background:rgba(0,0,0,.15);transition:background .3s,transform .3s,color .3s;
+    }
+    .product-card.choco .arrow-circle,.product-card.fraise .arrow-circle,.product-card.energy .arrow-circle{background:rgba(255,255,255,.2);}
+    .product-card:hover .arrow-circle{background:var(--ink);color:var(--ivory);transform:rotate(-45deg);}
+    .product-card.choco:hover .arrow-circle,.product-card.energy:hover .arrow-circle{background:var(--ivory);color:var(--ink);}
+
+    /* ============================================================
+       BANDE CTA
+       ============================================================ */
+    .cta{
+      background:linear-gradient(160deg,var(--red),var(--red-deep));color:var(--ivory);
+      border-radius:36px;margin:var(--section) auto;padding:clamp(3rem,5vw,5.5rem) var(--gutter);
+      max-width:1360px;text-align:center;position:relative;overflow:hidden;
+    }
+    .cta::before{content:"";position:absolute;inset:-40% -10% auto auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);}
+    .cta h2{font-family:'Fraunces',serif;font-size:var(--t-h2);font-weight:700;line-height:.95;letter-spacing:-.035em;margin-bottom:1.2rem;position:relative;}
+    .cta h2 em{font-style:italic;font-weight:400;}
+    .cta p{font-size:var(--t-lead);max-width:46ch;margin:0 auto 2.4rem;opacity:.92;position:relative;}
+    .cta .cta-actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;position:relative;}
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer{background:var(--ink);color:var(--ivory);padding:var(--section) 0 2.5rem;}
+    .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3rem;padding-bottom:3.5rem;border-bottom:1px solid rgba(255,255,255,.12);}
+    @media (max-width:880px){.footer-top{grid-template-columns:1fr;gap:2.5rem;}}
+    .footer-brand p{margin:1.5rem 0 0;max-width:34ch;opacity:.7;font-size:.95rem;line-height:1.6;}
+    .footer-col h4{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;opacity:.5;margin-bottom:1.2rem;font-weight:600;}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+    .footer-col a{opacity:.8;font-size:.95rem;transition:opacity .2s;}
+    .footer-col a:hover{opacity:1;color:var(--red-soft);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding-top:2rem;font-size:.85rem;opacity:.6;}
+  </style>
+</head>
+<body>
+
+  <!-- ============================== HEADER ============================== -->
+  <header id="header">
+    <div class="container nav-row">
+      <!-- ▼ EMPLACEMENT LOGO ROUGE (fond clair) — remplace par <img src="logo-rouge.svg"> ▼ -->
+      <a href="#accueil" class="logo-slot logo-red" aria-label="Vitamilk — Accueil">
+        <span class="v-mark">V</span>VITAMILK
+      </a>
+      <!-- ▲ FIN LOGO ROUGE ▲ -->
+
+      <nav class="primary" aria-label="Navigation principale">
+        <ul>
+          <li><a href="#produits">Nos produits</a></li>
+          <li><a href="#bienfaits">La force du soja</a></li>
+          <li><a href="#histoire">Histoire</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a href="#produits" class="btn btn-ghost">Découvrir</a>
+        <a href="#contact" class="btn btn-primary">Où acheter <span class="arrow">→</span></a>
+        <button class="menu-toggle" id="menuOpen" aria-label="Ouvrir le menu"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer mobile -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <button class="close" id="menuClose" aria-label="Fermer le menu">✕</button>
+    <ul>
+      <li><a href="#produits">Nos produits</a></li>
+      <li><a href="#bienfaits">La force du soja</a></li>
+      <li><a href="#histoire">Histoire</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-light" style="align-self:flex-start;">Où acheter <span class="arrow">→</span></a>
+  </div>
+
+  <main>
+
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" id="accueil">
+      <div class="hero-rail">Vitamilk · Côte d'Ivoire · Est. 1954</div>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <div class="hero-meta">
+              <span class="eyebrow" style="border:none;">N°1 Lait de Soja</span>
+              <span class="dot"></span>
+              <span class="eyebrow" style="border:none;">Made in C.I.</span>
+            </div>
+            <h1>Bois<br><em>ta force,</em><br>tous les jours.</h1>
+            <p class="hero-lead">
+              Le lait de soja onctueux, naturel et savoureux qui accompagne
+              chaque moment fort de ta journée. Énergie pure, plaisir entier.
+            </p>
+            <div class="hero-actions">
+              <a href="#produits" class="btn btn-primary">Découvrir nos saveurs <span class="arrow">→</span></a>
+              <a href="#histoire" class="btn btn-ghost">Notre histoire</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat">
+                <div class="num" data-count="5">5</div>
+                <div class="label">Saveurs uniques pour tous les goûts</div>
+              </div>
+              <div class="stat">
+                <div class="num" data-count="100" data-suffix="%">100%</div>
+                <div class="label">Graines de soja sélectionnées</div>
+              </div>
+              <div class="stat">
+                <div class="num" data-count="0">0</div>
+                <div class="label">Cholestérol, naturellement</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <!-- ▼ EMPLACEMENT IMAGE PRODUIT — remplace .bottle par <img> ▼ -->
+            <div class="bottle"><span class="hint">IMAGE&nbsp;PRODUIT</span></div>
+            <!-- ▲ FIN IMAGE PRODUIT ▲ -->
+            <div class="hero-badge">Nouveau<br>Pack 300ml</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== MARQUEE ============================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Énergie</span><span class="m-dot">●</span>
+        <span>Plaisir</span><span class="m-dot">●</span>
+        <span>Naturel</span><span class="m-dot">●</span>
+        <span>Made in Côte d'Ivoire</span><span class="m-dot">●</span>
+        <span>Sans cholestérol</span><span class="m-dot">●</span>
+        <span>Riche en protéines</span><span class="m-dot">●</span>
+        <span>Énergie</span><span class="m-dot">●</span>
+        <span>Plaisir</span><span class="m-dot">●</span>
+        <span>Naturel</span><span class="m-dot">●</span>
+        <span>Made in Côte d'Ivoire</span><span class="m-dot">●</span>
+        <span>Sans cholestérol</span><span class="m-dot">●</span>
+        <span>Riche en protéines</span><span class="m-dot">●</span>
+      </div>
+    </div>
+
+    <!-- ============================== BIENFAITS ============================== -->
+    <section class="section benefits" id="bienfaits">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow section-eyebrow">La Force du Soja</div>
+            <h2>Quatre raisons<br><em>de changer.</em></h2>
+          </div>
+          <p class="desc">
+            Derrière chaque gorgée, une promesse nutritionnelle : l'énergie naturelle
+            du soja, sans compromis sur le goût ni sur la naturalité.
+          </p>
+        </div>
+        <div class="benefit-grid">
+          <div class="benefit reveal">
+            <div class="b-num"><span class="counter" data-count="100">0</span><small>%</small></div>
+            <div class="b-title">Végétal</div>
+            <p class="b-text">Élaboré à partir de graines de soja entières, fraîches et soigneusement sélectionnées.</p>
+          </div>
+          <div class="benefit reveal">
+            <div class="b-num"><span class="counter" data-count="8">0</span><small>g</small></div>
+            <div class="b-title">De protéines</div>
+            <p class="b-text">Une source de protéines végétales par portion, pour soutenir ton énergie au quotidien.</p>
+          </div>
+          <div class="benefit reveal">
+            <div class="b-num"><span class="counter" data-count="0">0</span></div>
+            <div class="b-title">Cholestérol</div>
+            <p class="b-text">Naturellement sans cholestérol — la légèreté du soja, le plaisir d'une boisson onctueuse.</p>
+          </div>
+          <div class="benefit reveal">
+            <div class="b-num"><span class="counter" data-count="5">0</span></div>
+            <div class="b-title">Vitamines clés</div>
+            <p class="b-text">Enrichi en vitamines essentielles pour accompagner chaque moment fort de ta journée.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== NOS PRODUITS ============================== -->
+    <section class="section products" id="produits">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow section-eyebrow">La Gamme</div>
+            <h2>Cinq <em>saveurs.</em><br>Une seule énergie.</h2>
+          </div>
+          <p class="desc">
+            Chaque bouteille Vitamilk est élaborée à partir de graines de soja entières,
+            fraîches et naturelles. Choisis la tienne, ou prends-les toutes.
+          </p>
+        </div>
+        <div class="product-grid">
+          <article class="product-card nature reveal">
+            <div><div class="num">01 / Original</div></div>
+            <div class="bottle-mock"><div class="v-badge">V</div></div>
+            <div class="meta">
+              <div><div class="name">Nature</div><div class="vol">300 ml</div></div>
+              <div class="arrow-circle">→</div>
+            </div>
+          </article>
+          <article class="product-card choco reveal">
+            <div><div class="num">02 / Indulgent</div></div>
+            <div class="bottle-mock"><div class="v-badge">V</div></div>
+            <div class="meta">
+              <div><div class="name">Chocolat</div><div class="vol">300 ml</div></div>
+              <div class="arrow-circle">→</div>
+            </div>
+          </article>
+          <article class="product-card fraise reveal">
+            <div><div class="num">03 / Fruité</div></div>
+            <div class="bottle-mock"><div class="v-badge">V</div></div>
+            <div class="meta">
+              <div><div class="name">Fraise</div><div class="vol">300 ml</div></div>
+              <div class="arrow-circle">→</div>
+            </div>
+          </article>
+          <article class="product-card banane reveal">
+            <div><div class="num">04 / Tropical</div></div>
+            <div class="bottle-mock"><div class="v-badge">V</div></div>
+            <div class="meta">
+              <div><div class="name">Banane</div><div class="vol">300 ml</div></div>
+              <div class="arrow-circle">→</div>
+            </div>
+          </article>
+          <article class="product-card energy reveal">
+            <div><div class="num">05 / Performance</div></div>
+            <div class="bottle-mock"><div class="v-badge">V</div></div>
+            <div class="meta">
+              <div><div class="name">Energy</div><div class="vol">300 ml</div></div>
+              <div class="arrow-circle">→</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== HISTOIRE (ancre) + CTA ============================== -->
+    <section id="histoire">
+      <div class="cta">
+        <h2>Prêt à <em>boire ta force</em> ?</h2>
+        <p>Retrouve Vitamilk dans plus de 200 points de vente partout en Côte d'Ivoire. Distributeur ou partenaire ? Parlons-en.</p>
+        <div class="cta-actions">
+          <a href="#contact" class="btn btn-light">Trouver un point de vente <span class="arrow">→</span></a>
+          <a href="#contact" class="btn btn-ghost" style="border-color:rgba(255,255,255,.5);color:#fff;">Devenir partenaire</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <!-- ▼ EMPLACEMENT LOGO BLANC (fond sombre) — remplace par <img src="logo-blanc.svg"> ▼ -->
+          <span class="logo-slot logo-white"><span class="v-mark">V</span>VITAMILK</span>
+          <!-- ▲ FIN LOGO BLANC ▲ -->
+          <p>La force du soja, le goût d'Ivoire. Le lait de soja onctueux, naturel et énergisant qui accompagne chaque moment fort de ta journée.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#produits">Nos produits</a></li>
+            <li><a href="#bienfaits">La force du soja</a></li>
+            <li><a href="#histoire">Notre histoire</a></li>
+            <li><a href="#accueil">Accueil</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:contact@vitamilk.ci">contact@vitamilk.ci</a></li>
+            <li><a href="#">Abidjan, Côte d'Ivoire</a></li>
+            <li><a href="#">Devenir distributeur</a></li>
+            <li><a href="#">Nous suivre</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Vitamilk Côte d'Ivoire. Tous droits réservés.</span>
+        <span>Bois ta force.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================== SCRIPTS (vanilla, léger) ============================== -->
+  <script>
+    // ── Header : état au défilement ───────────────────────────
+    const header = document.getElementById('header');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // ── Drawer mobile ─────────────────────────────────────────
+    const drawer = document.getElementById('drawer');
+    document.getElementById('menuOpen').addEventListener('click', () => drawer.classList.add('open'));
+    document.getElementById('menuClose').addEventListener('click', () => drawer.classList.remove('open'));
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+
+    // ── Révélations au défilement ─────────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); revealObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) => {
+      el.style.transitionDelay = (i % 5) * 70 + 'ms';
+      revealObserver.observe(el);
+    });
+
+    // ── Compteurs animés ──────────────────────────────────────
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1200, start = performance.now();
+      (function step(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      })(start);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { animateCounter(e.target); counterObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+  </script>
+</body>
+</html>
