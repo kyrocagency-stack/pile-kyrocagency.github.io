@@ -73,22 +73,12 @@
     .btn .arrow{display:inline-block;transition:transform .3s;}
     .btn:hover .arrow{transform:translateX(4px);}
 
-    /* ---------- Emplacements LOGO ---------- */
-    .logo-slot{
-      display:inline-flex;align-items:center;justify-content:center;
-      font-weight:800;letter-spacing:.04em;font-size:1.25rem;line-height:1;
-      font-family:'Fraunces',serif;
-    }
-    .logo-slot .v-mark{
-      width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
-      margin-right:.5rem;font-size:1.1rem;font-weight:800;
-    }
-    /* Logo rouge — fonds clairs (header) */
-    .logo-red{color:var(--red);}
-    .logo-red .v-mark{background:var(--red);color:#fff;}
-    /* Logo blanc — fonds sombres (footer) */
-    .logo-white{color:#fff;}
-    .logo-white .v-mark{background:#fff;color:var(--red);}
+    /* ---------- Logos ---------- */
+    .logo-img{height:40px;width:auto;display:block;transition:height .3s;}
+    header.scrolled .logo-img{height:34px;}
+    .logo-link{display:inline-flex;align-items:center;}
+    .footer-logo{height:46px;width:auto;}
+    .drawer-logo{height:38px;width:auto;}
 
     /* ============================================================
        HEADER
@@ -311,11 +301,9 @@
   <!-- ============================== HEADER ============================== -->
   <header id="header">
     <div class="container nav-row">
-      <!-- ▼ EMPLACEMENT LOGO ROUGE (fond clair) — remplace par <img src="logo-rouge.svg"> ▼ -->
-      <a href="#accueil" class="logo-slot logo-red" aria-label="Vitamilk — Accueil">
-        <span class="v-mark">V</span>VITAMILK
+      <a href="#accueil" class="logo-link" aria-label="Vitamilk — Accueil">
+        <img src="assets/logo-vitamilk-rouge.png" alt="Vitamilk Côte d'Ivoire" class="logo-img" width="900" height="209">
       </a>
-      <!-- ▲ FIN LOGO ROUGE ▲ -->
 
       <nav class="primary" aria-label="Navigation principale">
         <ul>
@@ -337,6 +325,7 @@
   <!-- Drawer mobile -->
   <div class="drawer" id="drawer" aria-hidden="true">
     <button class="close" id="menuClose" aria-label="Fermer le menu">✕</button>
+    <img src="assets/logo-vitamilk-blanc.png" alt="Vitamilk" class="drawer-logo">
     <ul>
       <li><a href="#produits">Nos produits</a></li>
       <li><a href="#bienfaits">La force du soja</a></li>
@@ -526,9 +515,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <!-- ▼ EMPLACEMENT LOGO BLANC (fond sombre) — remplace par <img src="logo-blanc.svg"> ▼ -->
-          <span class="logo-slot logo-white"><span class="v-mark">V</span>VITAMILK</span>
-          <!-- ▲ FIN LOGO BLANC ▲ -->
+          <img src="assets/logo-vitamilk-blanc.png" alt="Vitamilk Côte d'Ivoire" class="footer-logo" width="900" height="219">
           <p>La force du soja, le goût d'Ivoire. Le lait de soja onctueux, naturel et énergisant qui accompagne chaque moment fort de ta journée.</p>
         </div>
         <div class="footer-col">
