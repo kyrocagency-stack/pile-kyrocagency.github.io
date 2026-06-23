@@ -1,0 +1,255 @@
+<!-- ============================================================
+     VITAMILK CÔTE D'IVOIRE — SECTION 01 : HERO (Accueil)
+     « Bois ta force »
+     ------------------------------------------------------------
+     • Bloc autonome, scopé sous .vm-hero (aucun style global).
+     • Mise en page asymétrique (texte large / visuel décalé).
+     • Typo audacieuse, parallaxe légère en CSS (Framer peut la
+       remplacer par un Scroll/Parallax natif).
+     • Emplacements logos balisés par des commentaires.
+     ============================================================ -->
+
+<section class="vm-hero" aria-label="Accueil — Bois ta force">
+  <!-- Décor d'arrière-plan (halos de marque) -->
+  <div class="vm-hero__bg" aria-hidden="true">
+    <span class="vm-hero__glow vm-hero__glow--red"></span>
+    <span class="vm-hero__glow vm-hero__glow--cream"></span>
+  </div>
+
+  <!-- Libellé vertical façon éditorial -->
+  <div class="vm-hero__rail" aria-hidden="true">VITAMILK · CÔTE D'IVOIRE · EST. 1954</div>
+
+  <div class="vm-hero__container">
+
+    <!-- ===================== COLONNE TEXTE ===================== -->
+    <div class="vm-hero__text">
+
+      <div class="vm-hero__eyebrow">
+        <span class="vm-hero__dot"></span>
+        N°1 du lait de soja en Côte d'Ivoire
+      </div>
+
+      <h1 class="vm-hero__title">
+        Bois
+        <em class="vm-hero__title-accent">ta force,</em>
+        tous les jours.
+      </h1>
+
+      <p class="vm-hero__lead">
+        Le lait de soja onctueux, naturel et savoureux qui accompagne
+        chaque moment fort de ta journée. Énergie pure, plaisir entier.
+      </p>
+
+      <div class="vm-hero__actions">
+        <a href="#produits" class="vm-btn vm-btn--primary">
+          Découvrir nos saveurs
+          <span class="vm-btn__arrow">→</span>
+        </a>
+        <a href="#histoire" class="vm-btn vm-btn--ghost">Notre histoire</a>
+      </div>
+
+      <!-- Statistiques de marque -->
+      <div class="vm-hero__stats">
+        <div class="vm-stat">
+          <span class="vm-stat__num">5</span>
+          <span class="vm-stat__label">Saveurs uniques pour tous les goûts</span>
+        </div>
+        <div class="vm-stat">
+          <span class="vm-stat__num">100%</span>
+          <span class="vm-stat__label">Graines de soja sélectionnées</span>
+        </div>
+        <div class="vm-stat">
+          <span class="vm-stat__num">0</span>
+          <span class="vm-stat__label">Cholestérol, naturellement</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== COLONNE VISUEL ===================== -->
+    <div class="vm-hero__visual">
+      <div class="bottle-wrapper">
+
+        <!-- ▼▼▼ EMPLACEMENT IMAGE PRODUIT (bouteille / brique) ▼▼▼
+             Remplace ce bloc par <img> ou un Frame image dans Framer.
+             Format conseillé : PNG/WebP détouré, ratio ~4/5. -->
+        <div class="bottle-placeholder" role="img" aria-label="Bouteille Vitamilk">
+          <span class="bottle-placeholder__hint">IMAGE&nbsp;PRODUIT</span>
+        </div>
+        <!-- ▲▲▲ FIN EMPLACEMENT IMAGE PRODUIT ▲▲▲ -->
+
+        <!-- Badge rotatif promotionnel -->
+        <div class="vm-hero__badge">Nouveau<br>Pack 300 ml</div>
+
+        <!-- ▼ EMPLACEMENT LOGO BLANC (fond immersif) ▼
+             Réservé aux fonds sombres/rouges. Visible si tu passes
+             la pastille en rouge plein. -->
+        <div class="vm-logo-slot vm-logo-slot--white" aria-label="Logo Vitamilk blanc">
+          LOGO&nbsp;BLANC
+        </div>
+        <!-- ▲ FIN EMPLACEMENT LOGO BLANC ▲ -->
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* =====================================================================
+   SCOPE : .vm-hero  (tout est préfixé pour éviter les conflits Framer)
+   Palette Vitamilk : Rouge #E8252C · Crème #F5EDD9 · Ivoire #FBF6E9
+   ===================================================================== */
+.vm-hero{
+  /* --- Tokens de marque --- */
+  --vm-red:#E8252C;
+  --vm-red-deep:#B81820;
+  --vm-cream:#F5EDD9;
+  --vm-ivory:#FBF6E9;
+  --vm-ink:#1A1209;
+  --vm-ink-soft:#2A1F12;
+  --vm-line:rgba(26,18,9,.12);
+
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:9rem clamp(1.25rem,2vw,2.5rem) clamp(4rem,7vw,8rem);
+  background:var(--vm-ivory);
+  color:var(--vm-ink);
+  font-family:'Poppins','Montserrat',-apple-system,'Segoe UI',sans-serif;
+}
+
+/* ---------- Décor / halos ---------- */
+.vm-hero__bg{position:absolute;inset:0;z-index:-1;}
+.vm-hero__glow{position:absolute;border-radius:50%;filter:blur(10px);}
+.vm-hero__glow--red{
+  top:-12%;right:-6%;width:46vw;height:46vw;max-width:680px;max-height:680px;
+  background:radial-gradient(circle at 50% 50%,rgba(232,37,44,.16),transparent 62%);
+}
+.vm-hero__glow--cream{
+  bottom:-20%;left:-10%;width:40vw;height:40vw;max-width:560px;max-height:560px;
+  background:radial-gradient(circle at 50% 50%,rgba(212,162,76,.14),transparent 65%);
+}
+
+/* ---------- Libellé vertical ---------- */
+.vm-hero__rail{
+  position:absolute;left:-2px;top:52%;transform:rotate(-90deg);transform-origin:left center;
+  font-size:.72rem;letter-spacing:.42em;font-weight:600;color:var(--vm-ink-soft);
+  opacity:.55;white-space:nowrap;pointer-events:none;
+}
+
+/* ---------- Grille asymétrique ---------- */
+.vm-hero__container{
+  position:relative;
+  width:100%;max-width:1440px;margin:0 auto;
+  display:grid;grid-template-columns:1.45fr 1fr;
+  gap:clamp(2rem,4vw,4rem);align-items:center;min-height:74vh;
+}
+
+/* ---------- Bloc texte ---------- */
+.vm-hero__eyebrow{
+  display:inline-flex;align-items:center;gap:.6em;
+  font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--vm-red);margin-bottom:1.8rem;
+}
+.vm-hero__dot{width:8px;height:8px;border-radius:50%;background:var(--vm-red);
+  box-shadow:0 0 0 4px rgba(232,37,44,.18);}
+
+.vm-hero__title{
+  margin:0 0 1.5rem;
+  font-size:clamp(3rem,1.2rem + 8vw,8.5rem);
+  font-weight:800;line-height:.9;letter-spacing:-.04em;
+  text-transform:none;
+}
+.vm-hero__title-accent{
+  display:block;font-style:italic;font-weight:600;color:var(--vm-red);
+}
+
+.vm-hero__lead{
+  max-width:38ch;margin:0 0 2.4rem;
+  font-size:clamp(1.05rem,1rem + .4vw,1.35rem);font-weight:400;line-height:1.5;
+  color:var(--vm-ink-soft);
+}
+
+/* ---------- Boutons ---------- */
+.vm-hero__actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:3rem;}
+.vm-btn{
+  display:inline-flex;align-items:center;gap:.6em;
+  padding:1em 1.7em;border-radius:999px;
+  font-size:.95rem;font-weight:600;letter-spacing:.01em;cursor:pointer;
+  text-decoration:none;white-space:nowrap;
+  transition:transform .25s cubic-bezier(.2,.7,.2,1),background .25s,color .25s;
+}
+.vm-btn--primary{background:var(--vm-red);color:var(--vm-ivory);}
+.vm-btn--primary:hover{background:var(--vm-red-deep);transform:translateY(-2px);}
+.vm-btn--ghost{background:transparent;color:var(--vm-ink);border:1.5px solid var(--vm-ink);}
+.vm-btn--ghost:hover{background:var(--vm-ink);color:var(--vm-ivory);}
+.vm-btn__arrow{transition:transform .3s;}
+.vm-btn--primary:hover .vm-btn__arrow{transform:translateX(4px);}
+
+/* ---------- Statistiques ---------- */
+.vm-hero__stats{
+  display:flex;flex-wrap:wrap;gap:2.5rem;
+  padding-top:2rem;border-top:1px solid var(--vm-line);
+}
+.vm-stat{display:flex;flex-direction:column;}
+.vm-stat__num{
+  font-size:2.6rem;font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--vm-red);
+}
+.vm-stat__label{margin-top:.5rem;max-width:18ch;font-size:.82rem;color:var(--vm-ink-soft);}
+
+/* ---------- Visuel produit ---------- */
+.vm-hero__visual{
+  position:relative;justify-self:end;
+  width:100%;max-width:520px;aspect-ratio:4/5;
+}
+.bottle-wrapper{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  animation:vm-float 6s ease-in-out infinite;        /* Framer : remplaçable par un effet natif */
+}
+@keyframes vm-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+/* Placeholder visuel (à remplacer par l'image réelle) */
+.bottle-placeholder{
+  position:relative;width:100%;height:100%;border-radius:30px 30px 200px 200px/30px 30px 90px 90px;
+  background:
+    radial-gradient(ellipse at 50% 100%,rgba(232,37,44,.22),transparent 60%),
+    linear-gradient(160deg,#FFE4B5 0%,var(--vm-cream) 60%,#E8D5A8 100%);
+  box-shadow:inset 0 -40px 80px rgba(232,37,44,.08),0 30px 80px rgba(26,18,9,.18);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.bottle-placeholder__hint{
+  font-size:.8rem;font-weight:600;letter-spacing:.25em;color:rgba(26,18,9,.35);
+}
+
+/* Badge rotatif */
+.vm-hero__badge{
+  position:absolute;top:-22px;right:-22px;z-index:3;
+  width:128px;height:128px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  background:var(--vm-red);color:var(--vm-ivory);
+  font-style:italic;font-weight:500;font-size:.95rem;line-height:1.15;
+  box-shadow:0 10px 30px rgba(232,37,44,.35);
+  animation:vm-spin 22s linear infinite;             /* Framer : remplaçable par un effet natif */
+}
+@keyframes vm-spin{to{transform:rotate(360deg)}}
+
+/* ---------- Emplacements LOGO ---------- */
+.vm-logo-slot{
+  position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
+  display:flex;align-items:center;justify-content:center;
+  padding:.5em 1em;border-radius:8px;
+  font-size:.7rem;font-weight:700;letter-spacing:.2em;
+  border:1px dashed currentColor;opacity:.5;
+}
+.vm-logo-slot--white{color:#fff;}   /* logo blanc : fonds sombres/immersifs */
+.vm-logo-slot--red{color:var(--vm-red);} /* logo rouge : fonds clairs (nav) */
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width:880px){
+  .vm-hero{padding:7rem 1.25rem 4rem;}
+  .vm-hero__container{grid-template-columns:1fr;min-height:auto;gap:3rem;}
+  .vm-hero__visual{justify-self:center;max-width:380px;}
+  .vm-hero__rail{display:none;}
+}
+</style>

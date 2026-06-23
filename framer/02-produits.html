@@ -1,0 +1,219 @@
+<!-- ============================================================
+     VITAMILK CÔTE D'IVOIRE — SECTION 03 : NOS PRODUITS (Gamme)
+     « Cinq saveurs. Une seule énergie. »
+     ------------------------------------------------------------
+     • Bloc autonome, scopé sous .vm-products.
+     • Grille fluide avec effet de zoom/élévation au survol (CSS pur).
+       Framer peut convertir la grille en composant + variants hover.
+     • Chaque carte = un emplacement image produit balisé.
+     ============================================================ -->
+
+<section class="vm-products" id="produits" aria-label="Nos produits — la gamme">
+  <div class="vm-products__container">
+
+    <!-- En-tête de section (asymétrique) -->
+    <header class="vm-products__head">
+      <div>
+        <div class="vm-products__eyebrow">
+          <span class="vm-products__dot"></span> La Gamme
+        </div>
+        <h2 class="vm-products__title">
+          Cinq <em>saveurs.</em><br>Une seule énergie.
+        </h2>
+      </div>
+      <p class="vm-products__desc">
+        Chaque bouteille Vitamilk est élaborée à partir de graines de soja
+        entières, fraîches et naturelles. Choisis la tienne, ou prends-les toutes.
+      </p>
+    </header>
+
+    <!-- Grille produits -->
+    <div class="vm-products__grid">
+
+      <!-- ───── Carte 01 ───── -->
+      <article class="vm-card vm-card--nature">
+        <span class="vm-card__num">01 / Original</span>
+        <!-- ▼ EMPLACEMENT IMAGE PRODUIT — remplace par <img>/Frame ▼ -->
+        <div class="vm-card__media" role="img" aria-label="Vitamilk Nature">
+          <span class="vm-card__badge">V</span>
+        </div>
+        <!-- ▲ FIN EMPLACEMENT IMAGE ▲ -->
+        <div class="vm-card__foot">
+          <div>
+            <span class="vm-card__name">Nature</span>
+            <span class="vm-card__vol">300 ml</span>
+          </div>
+          <span class="vm-card__arrow">→</span>
+        </div>
+      </article>
+
+      <!-- ───── Carte 02 ───── -->
+      <article class="vm-card vm-card--choco">
+        <span class="vm-card__num">02 / Indulgent</span>
+        <div class="vm-card__media" role="img" aria-label="Vitamilk Chocolat">
+          <span class="vm-card__badge">V</span>
+        </div>
+        <div class="vm-card__foot">
+          <div>
+            <span class="vm-card__name">Chocolat</span>
+            <span class="vm-card__vol">300 ml</span>
+          </div>
+          <span class="vm-card__arrow">→</span>
+        </div>
+      </article>
+
+      <!-- ───── Carte 03 ───── -->
+      <article class="vm-card vm-card--fraise">
+        <span class="vm-card__num">03 / Fruité</span>
+        <div class="vm-card__media" role="img" aria-label="Vitamilk Fraise">
+          <span class="vm-card__badge">V</span>
+        </div>
+        <div class="vm-card__foot">
+          <div>
+            <span class="vm-card__name">Fraise</span>
+            <span class="vm-card__vol">300 ml</span>
+          </div>
+          <span class="vm-card__arrow">→</span>
+        </div>
+      </article>
+
+      <!-- ───── Carte 04 ───── -->
+      <article class="vm-card vm-card--banane">
+        <span class="vm-card__num">04 / Tropical</span>
+        <div class="vm-card__media" role="img" aria-label="Vitamilk Banane">
+          <span class="vm-card__badge">V</span>
+        </div>
+        <div class="vm-card__foot">
+          <div>
+            <span class="vm-card__name">Banane</span>
+            <span class="vm-card__vol">300 ml</span>
+          </div>
+          <span class="vm-card__arrow">→</span>
+        </div>
+      </article>
+
+      <!-- ───── Carte 05 ───── -->
+      <article class="vm-card vm-card--energy">
+        <span class="vm-card__num">05 / Performance</span>
+        <div class="vm-card__media" role="img" aria-label="Vitamilk Energy">
+          <span class="vm-card__badge">V</span>
+        </div>
+        <div class="vm-card__foot">
+          <div>
+            <span class="vm-card__name">Energy</span>
+            <span class="vm-card__vol">300 ml</span>
+          </div>
+          <span class="vm-card__arrow">→</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* =====================================================================
+   SCOPE : .vm-products
+   Palette Vitamilk : Rouge #E8252C · Crème #F5EDD9 · Ivoire #FBF6E9
+   ===================================================================== */
+.vm-products{
+  --vm-red:#E8252C;
+  --vm-red-deep:#B81820;
+  --vm-cream:#F5EDD9;
+  --vm-ivory:#FBF6E9;
+  --vm-ink:#1A1209;
+  --vm-ink-soft:#2A1F12;
+  --vm-line:rgba(26,18,9,.12);
+
+  padding:clamp(4rem,7vw,9rem) clamp(1.25rem,2vw,2.5rem);
+  background:var(--vm-cream);
+  color:var(--vm-ink);
+  font-family:'Poppins','Montserrat',-apple-system,'Segoe UI',sans-serif;
+}
+.vm-products__container{width:100%;max-width:1440px;margin:0 auto;}
+
+/* ---------- En-tête asymétrique ---------- */
+.vm-products__head{
+  display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(1.5rem,3vw,3rem);
+  align-items:end;margin-bottom:clamp(2.5rem,5vw,4rem);
+}
+.vm-products__eyebrow{
+  display:inline-flex;align-items:center;gap:.6em;margin-bottom:1rem;
+  font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--vm-red);
+}
+.vm-products__dot{width:8px;height:8px;border-radius:50%;background:var(--vm-red);}
+.vm-products__title{
+  margin:0;font-size:clamp(2rem,1.3rem + 3.2vw,4.2rem);
+  font-weight:800;line-height:.96;letter-spacing:-.035em;
+}
+.vm-products__title em{font-style:italic;font-weight:600;color:var(--vm-red);}
+.vm-products__desc{
+  margin:0;max-width:50ch;
+  font-size:clamp(1.05rem,1rem + .4vw,1.3rem);line-height:1.45;color:var(--vm-ink-soft);
+}
+
+/* ---------- Grille ---------- */
+.vm-products__grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;
+}
+
+/* ---------- Carte produit ---------- */
+.vm-card{
+  position:relative;aspect-ratio:3/4;border-radius:24px;padding:1.5rem;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:space-between;
+  color:var(--vm-ink);cursor:pointer;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
+}
+.vm-card:hover{transform:translateY(-10px);box-shadow:0 24px 50px rgba(26,18,9,.20);}
+
+/* Déclinaisons de saveurs */
+.vm-card--nature{background:linear-gradient(165deg,#F5EDD9,#E8D8B0);}
+.vm-card--choco {background:linear-gradient(165deg,#6B4423,#3D2817);color:var(--vm-ivory);}
+.vm-card--fraise{background:linear-gradient(165deg,#F4B8C0,#D9747F);color:var(--vm-ivory);}
+.vm-card--banane{background:linear-gradient(165deg,#F4DC8C,#D4A24C);}
+.vm-card--energy{background:linear-gradient(165deg,var(--vm-red),var(--vm-red-deep));color:var(--vm-ivory);}
+
+.vm-card__num{font-style:italic;font-size:.9rem;font-weight:500;opacity:.65;}
+
+/* Zone image produit + zoom au survol */
+.vm-card__media{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:62%;aspect-ratio:1/2.4;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.30);
+  border-radius:14px 14px 60px 60px/10px 10px 18px 18px;backdrop-filter:blur(2px);
+  transition:transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.vm-card:hover .vm-card__media{transform:translate(-50%,-50%) scale(1.07);}
+
+/* Pastille « V » de marque */
+.vm-card__badge{
+  width:50px;height:50px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--vm-red);color:var(--vm-ivory);font-weight:800;font-size:1.5rem;
+}
+.vm-card--energy .vm-card__badge{background:var(--vm-ivory);color:var(--vm-red);}
+
+/* Pied de carte */
+.vm-card__foot{
+  position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:.5rem;
+}
+.vm-card__name{display:block;font-weight:700;font-size:1.4rem;letter-spacing:-.02em;line-height:1;}
+.vm-card__vol{display:block;margin-top:.25rem;font-size:.8rem;opacity:.7;}
+.vm-card__arrow{
+  width:40px;height:40px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.15);transition:background .3s,transform .3s,color .3s;
+}
+.vm-card--choco .vm-card__arrow,
+.vm-card--fraise .vm-card__arrow,
+.vm-card--energy .vm-card__arrow{background:rgba(255,255,255,.22);}
+.vm-card:hover .vm-card__arrow{background:var(--vm-ink);color:var(--vm-ivory);transform:rotate(-45deg);}
+.vm-card--choco:hover .vm-card__arrow,
+.vm-card--energy:hover .vm-card__arrow{background:var(--vm-ivory);color:var(--vm-ink);}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width:1100px){.vm-products__grid{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:880px){.vm-products__head{grid-template-columns:1fr;gap:1.5rem;}}
+@media (max-width:700px){.vm-products__grid{grid-template-columns:repeat(2,1fr);gap:1rem;}}
+</style>
