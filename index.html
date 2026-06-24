@@ -235,40 +235,38 @@
     @media (max-width:1100px){.product-grid{grid-template-columns:repeat(3,1fr);}}
     @media (max-width:700px){.product-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}}
     .product-card{
-      position:relative;aspect-ratio:3/4;border-radius:var(--radius);padding:1.5rem;overflow:hidden;
+      position:relative;aspect-ratio:3/4;border-radius:var(--radius);padding:1.4rem;overflow:hidden;
       display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);cursor:pointer;
+      background:#fff;border:1px solid var(--line);
       transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
     }
     .product-card:hover{transform:translateY(-10px);box-shadow:var(--shadow);}
-    .product-card.nature{background:linear-gradient(165deg,#F5EDD9,#E8D8B0);}
-    .product-card.choco{background:linear-gradient(165deg,#6B4423,#3D2817);color:var(--ivory);}
-    .product-card.fraise{background:linear-gradient(165deg,#F4B8C0,#D9747F);color:var(--ivory);}
-    .product-card.banane{background:linear-gradient(165deg,#F4DC8C,#D4A24C);}
-    .product-card.energy{background:linear-gradient(165deg,var(--red),var(--red-deep));color:var(--ivory);}
-    .product-card .num{font-family:'Fraunces',serif;font-style:italic;font-size:.9rem;opacity:.6;}
-    .product-card .bottle-mock{
-      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-      width:60%;aspect-ratio:1/2.4;display:flex;align-items:center;justify-content:center;
-      background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
-      border-radius:14px 14px 60px 60px/8px 8px 16px 16px;backdrop-filter:blur(2px);
-      transition:transform .4s cubic-bezier(.2,.7,.2,1);
+    /* Teintes douces par parfum (le verre réel s'y fond) */
+    .product-card.nature{background:radial-gradient(120% 80% at 50% 12%,#FFFDF7,#F4ECDA);}
+    .product-card.choco {background:radial-gradient(120% 80% at 50% 12%,#FBF4EE,#EFE2D6);}
+    .product-card.fraise{background:radial-gradient(120% 80% at 50% 12%,#FFF6F7,#FCE7EB);}
+    .product-card.banane{background:radial-gradient(120% 80% at 50% 12%,#FFFCEE,#FBF1CF);}
+    .product-card.energy{background:radial-gradient(120% 80% at 50% 12%,#FBF3F3,#F3E3E2);}
+    .product-card .num{position:relative;z-index:3;font-family:'Fraunces',serif;font-style:italic;font-size:.9rem;color:var(--ink-soft);opacity:.65;}
+    /* Photo produit réelle */
+    .product-card .product-photo{
+      position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+      pointer-events:none;
     }
-    .product-card:hover .bottle-mock{transform:translate(-50%,-50%) scale(1.07);}
-    .product-card .v-badge{
-      width:48px;height:48px;border-radius:999px;display:flex;align-items:center;justify-content:center;
-      background:var(--red);color:var(--ivory);font-family:'Fraunces',serif;font-weight:800;font-size:1.4rem;
+    .product-card .product-photo img{
+      height:82%;width:auto;object-fit:contain;
+      filter:drop-shadow(0 18px 22px rgba(26,18,9,.18));
+      transition:transform .45s cubic-bezier(.2,.7,.2,1);
     }
-    .product-card.energy .v-badge{background:var(--ivory);color:var(--red);}
+    .product-card:hover .product-photo img{transform:translateY(-6px) scale(1.05);}
     .product-card .meta{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:flex-end;gap:.5rem;}
     .product-card .name{font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem;letter-spacing:-.02em;line-height:1;}
-    .product-card .vol{font-size:.8rem;opacity:.7;margin-top:.25rem;}
+    .product-card .vol{font-size:.8rem;color:var(--ink-soft);opacity:.7;margin-top:.25rem;}
     .product-card .arrow-circle{
       width:38px;height:38px;border-radius:999px;flex:none;display:flex;align-items:center;justify-content:center;
-      background:rgba(0,0,0,.15);transition:background .3s,transform .3s,color .3s;
+      background:var(--red);color:var(--ivory);transition:background .3s,transform .3s,color .3s;
     }
-    .product-card.choco .arrow-circle,.product-card.fraise .arrow-circle,.product-card.energy .arrow-circle{background:rgba(255,255,255,.2);}
-    .product-card:hover .arrow-circle{background:var(--ink);color:var(--ivory);transform:rotate(-45deg);}
-    .product-card.choco:hover .arrow-circle,.product-card.energy:hover .arrow-circle{background:var(--ivory);color:var(--ink);}
+    .product-card:hover .arrow-circle{background:var(--ink);transform:rotate(-45deg);}
 
     /* ============================================================
        SHOWCASE — TOUTE LA GAMME (bannière)
@@ -390,7 +388,7 @@
           </div>
           <div class="hero-visual">
             <div class="bottle">
-              <img src="assets/bouteille-banana.png" alt="Bouteille Vitamilk Banana 300 ml" class="hero-bottle-img" width="560" height="1120">
+              <img src="assets/bouteille-original.webp" alt="Bouteille Vitamilk Original 300 ml" class="hero-bottle-img" width="600" height="1785">
             </div>
             <div class="hero-badge">Nouveau<br>Pack 300ml</div>
           </div>
@@ -469,40 +467,40 @@
         </div>
         <div class="product-grid">
           <article class="product-card nature reveal">
-            <div><div class="num">01 / Original</div></div>
-            <div class="bottle-mock"><div class="v-badge">V</div></div>
+            <div class="num">01 / Original</div>
+            <div class="product-photo"><img src="assets/bouteille-original.webp" alt="Vitamilk Original 300 ml" loading="lazy" width="600" height="1785"></div>
             <div class="meta">
-              <div><div class="name">Nature</div><div class="vol">300 ml</div></div>
+              <div><div class="name">Original</div><div class="vol">300 ml</div></div>
               <div class="arrow-circle">→</div>
             </div>
           </article>
           <article class="product-card choco reveal">
-            <div><div class="num">02 / Indulgent</div></div>
-            <div class="bottle-mock"><div class="v-badge">V</div></div>
+            <div class="num">02 / Indulgent</div>
+            <div class="product-photo"><img src="assets/bouteille-choco.webp" alt="Vitamilk Double Choco Shake 300 ml" loading="lazy" width="520" height="1476"></div>
             <div class="meta">
-              <div><div class="name">Chocolat</div><div class="vol">300 ml</div></div>
+              <div><div class="name">Choco Shake</div><div class="vol">300 ml</div></div>
               <div class="arrow-circle">→</div>
             </div>
           </article>
           <article class="product-card fraise reveal">
-            <div><div class="num">03 / Fruité</div></div>
-            <div class="bottle-mock"><div class="v-badge">V</div></div>
+            <div class="num">03 / Fruité</div>
+            <div class="product-photo"><img src="assets/bouteille-fraise.webp" alt="Vitamilk Strawberry 300 ml" loading="lazy" width="520" height="1495"></div>
             <div class="meta">
-              <div><div class="name">Fraise</div><div class="vol">300 ml</div></div>
+              <div><div class="name">Strawberry</div><div class="vol">300 ml</div></div>
               <div class="arrow-circle">→</div>
             </div>
           </article>
           <article class="product-card banane reveal">
-            <div><div class="num">04 / Tropical</div></div>
-            <div class="bottle-mock"><div class="v-badge">V</div></div>
+            <div class="num">04 / Tropical</div>
+            <div class="product-photo"><img src="assets/bouteille-banane.webp" alt="Vitamilk Banana 300 ml" loading="lazy" width="520" height="1204"></div>
             <div class="meta">
-              <div><div class="name">Banane</div><div class="vol">300 ml</div></div>
+              <div><div class="name">Banana</div><div class="vol">300 ml</div></div>
               <div class="arrow-circle">→</div>
             </div>
           </article>
           <article class="product-card energy reveal">
-            <div><div class="num">05 / Performance</div></div>
-            <div class="bottle-mock"><div class="v-badge">V</div></div>
+            <div class="num">05 / Performance</div>
+            <div class="product-photo"><img src="assets/bouteille-energy.webp" alt="Vitamilk Energy 300 ml" loading="lazy" width="520" height="1613"></div>
             <div class="meta">
               <div><div class="name">Energy</div><div class="vol">300 ml</div></div>
               <div class="arrow-circle">→</div>
